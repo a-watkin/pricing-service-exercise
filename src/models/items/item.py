@@ -70,10 +70,10 @@ class Item(object):
 if __name__ == '__main__':
     Database.initialize()
     # meh = Store("John Lewis", "http://www.johnlewis.com", "span", {"id": "price"})
-    # blah = Item("herman miller aeron office chair", "http://www.johnlewis.com/herman-miller-aeron-office-chair/p230630306",
+    # Procfile = Item("herman miller aeron office chair", "http://www.johnlewis.com/herman-miller-aeron-office-chair/p230630306",
     #             Store("John Lewis", "http://www.johnlewis.com", "p", {"class": "price"}))
 
-    # print("price is: ", blah.price)
+    # print("price is: ", Procfile.price)
 
     # def __init__(self, name, url, _id=None):
     meh = Item("John Lewis", "http://www.johnlewis.com/herman-miller-aeron-office-chair/p230630306", "e3f9b504a1fe478898fb797083cc9adc")

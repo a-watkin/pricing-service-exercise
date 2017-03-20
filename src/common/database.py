@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     # ok so it works
     # result = db.find_one("users", {"email": "test@test.com"})
-    # result2 = db.find("users", {"email": "blah@blah.com"})
+    # result2 = db.find("users", {"email": "Procfile@Procfile.com"})
     # result3 = db.count('users')
     # print('why?', result2)
 
