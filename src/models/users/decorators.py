@@ -38,7 +38,7 @@ def requires_admin_permission(func):
     return decorated_function
 
 
-        # all decorators take the function they are decorating as an argument
+# all decorators take the function they are decorating as an argument
 # @requires_login
 # def my_function(x, y):
 #     return x + y

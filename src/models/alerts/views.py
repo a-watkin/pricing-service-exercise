@@ -95,11 +95,6 @@ def get_alert_page(alert_id):
     return render_template('/alerts/alert.html', alert=alert)
 
 
-
-# this works
-# @alert_blueprint.route('/<string:alert_id>')
-# this dosen't
-# you forgot the route part you idiot
 @alert_blueprint.route('/check_price/<string:alert_id>')
 def check_alert_price(alert_id):
     Alert.find_by_id(alert_id).load_item_price()

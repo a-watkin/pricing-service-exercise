@@ -19,7 +19,7 @@ class Alert(object):
         self.last_checked = datetime.datetime.utcnow() if last_checked is None else last_checked
         self._id = uuid.uuid4().hex if _id is None else _id
 
-        # why doesn't this work? well it works if you put it at the back
+        # why doesn't this work? well it works if you put it last
         self.active = active
 
     def __repr__(self):
@@ -40,14 +40,17 @@ class Alert(object):
 
     def send(self):
         print('SEND HAS BEEN CALLED')
-        msg = MIMEText('hey {}'.format(self.user_email))
-        msg['Subject'] = "so it sends but i don't get it because yeah that would be easy now wouldn't it?"
-        msg['From'] = "postmaster@sandbox91bd6a354579468a831004f9df273bcf.mailgun.org"
-        msg['To'] = "awatkin.work@gmail.com"
+        msg = MIMEText('Hi {} we have found a price alert for you.'.format(self.user_email))
+        msg['Subject'] = "Price alert"
+        msg['From'] = AlertConstants.FROM
 
-        s = smtplib.SMTP('smtp.mailgun.org', 587)
+        # assert self.user_email is None
+        # msg['To'] = AlertConstants.TEST_EMAIL if self.user_email is None else self.user_email
+        msg['To'] = AlertConstants.TEST_EMAIL
 
-        s.login('postmaster@sandbox91bd6a354579468a831004f9df273bcf.mailgun.org', 'ca9a0bd4a3bf3a5cf8d31b0b1f8935ce')
+        s = smtplib.SMTP( AlertConstants.SMPT_URL, AlertConstants.SMPT_PORT )
+
+        s.login(AlertConstants.FROM, AlertConstants.SMPT_KEY)
         s.sendmail(msg['From'], msg['To'], msg.as_string())
         s.quit()
 
