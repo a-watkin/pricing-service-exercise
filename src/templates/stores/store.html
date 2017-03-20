@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Stores <small>{{ store.name }}</small></h1>
+    </div>
+    <p class="list-group-item-text">All URLs in this store should start with <strong>{{ store.url_prefix }}</strong></p>
+
+
+
+    <!--only admins can see the buttons but you have to secure the endpoints too-->
+    {% if session['email'] in config.ADMINS %}
+    <div class="panel panel-default">
+         <div class="panel-body">
+
+            <a class="btn btn-warning" href="{{ url_for('stores.edit_store', store_id=store._id) }}" role="button">
+                Edit store
+            </a>
+
+            <a class="btn btn-danger" href="{{ url_for('stores.delete_store', store_id=store._id) }}" role="button">
+                Delete store
+            </a>
+
+         </div>
+    </div>
+    {% endif %}
+
+
+
+
+
+
+    <!--<a class="btn btn-success" href="{{ url_for('stores.create_store') }}">-->
+        <!--<span class="glyphicon glyphicon-plus"></span> Create new-->
+    <!--</a>-->
+
+
+{% endblock %}

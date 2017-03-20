@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Edit alert</h1>
+
+    </div>
+
+    <!--def __init__(self, user_email, price_limit, item_id=None, last_checked=None, _id=None, active=True):-->
+    <!--{{ alert.user_email }}-->
+    <!--{{ alert.item.name }}-->
+    <!--{{ alert.item_id }}-->
+    <!--{{ alert.item_id }}-->
+    <!--{{ alert.item_id }}-->
+
+
+    <div class="form-size">
+        <!--sends data to the same page-->
+        <form method="post">
+
+        <div class="form-group">
+            <label for="name">Alert name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Alert name" value="{{ alert.item.name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" name="url" placeholder="http://.." value="{{ alert.item.url }}" aria-describedby="urlHelpBlock">
+            <span id="urlHelpBlock" class="help-block">
+                Update the URL?</span>
+        </div>
+
+        <div class="form-group">
+            <label for="price_limit">Price alert limit</label>
+            <!--json does not accept single quotation marks-->
+            <input type="text" class="form-control" id="price_limit" name="price_limit" placeholder="45.00" value="{{ alert.price_limit }}" aria-describedby="queryHelpBlock">
+
+            <span id="searchQuery" class="help-block">
+                What should the new price limit be?</span>
+        </div>
+
+
+        <button type="submit" class="btn btn-warning">Update</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}
