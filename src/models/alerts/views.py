@@ -9,11 +9,10 @@ alert_blueprint = Blueprint('alerts', __name__)
 
 
 @alert_blueprint.route('/')
+@user_decorators.requires_login
 def index():
-    # pass
-    # return render_template('stores/store_index.html', stores=stores)
-    # return get_alert_page(alert_id)
-    return "methods not method"
+    pass
+    # return "methods not method"
 
 # so on a hunch i commented this out and now it works? what the actual fuck
 # its methods, not method

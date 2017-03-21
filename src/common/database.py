@@ -19,6 +19,7 @@ class Database(object):
     def initialize():
         client = pymongo.MongoClient(Database.URI)
         Database.DATABASE = client.get_default_database()
+        # Database.DATABASE = client['fullstack']
 
     @staticmethod
     def insert(collection, data):
@@ -55,7 +56,10 @@ if __name__ == '__main__':
     # result3 = db.count('users')
     # print('why?', result2)
 
-    print('users')
-    result = db.find_one("users", "test5@test.com")
-    print(result)
-    print('/n')
+
+    result = db.find( "users", {} )
+    print( [elem for elem in Database.find("users", {})] )
+    # print('/n')
+
+    result2 = db.find_one("users", {"email": 'test5@test.com'})
+    print(result2)
