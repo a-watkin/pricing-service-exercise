@@ -4,6 +4,8 @@ from werkzeug.utils import redirect
 from src.models.users.user import User, UserError
 import src.models.users.decorators as user_decorators
 
+# print( type( user_decorators) )
+
 
 user_blueprint = Blueprint('users', __name__)
 

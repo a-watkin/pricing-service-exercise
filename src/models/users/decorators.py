@@ -1,6 +1,9 @@
 from functools import wraps
 from flask import session, url_for, redirect, request
-from src.app import app
+
+# so here it is, correct statement not working.
+# this actually breaks an import in views
+# from src.app import app
 
 
 # the whole thing checks to see if the user is logged in, if they are it just allows them to continue
