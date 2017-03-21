@@ -1,13 +1,14 @@
 import pymongo
-
+import os
 
 class Database(object):
     # class static variables
-    URI = "mongodb://127.0.0.1:27017"
+    # URI = "mongodb://127.0.0.1:27017"
+    # mongo lab adds this URI by default
+    URI = os.environ.get("MONGOLAB_URI")
     DATABASE = None
-    # there's no evidence that this class is working at all
 
-    print('Database here: database called')
+    # print('Database here: database called')
     # def __init__(self):
     #     self.uri = ""
     #     self.database = None
@@ -26,13 +27,13 @@ class Database(object):
 
     @staticmethod
     def find(collection, query):
-        print('Database here: find called', collection, query)
+        # print('Database here: find called', collection, query)
         return Database.DATABASE[collection].find(query)
 
 
     @staticmethod
     def find_one(collection, query):
-        print('Database here: find_one called with', collection, query)
+        # print('Database here: find_one called with', collection, query)
         # so why isn't it working when being called?
         return Database.DATABASE[collection].find_one(query)
 

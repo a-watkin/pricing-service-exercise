@@ -39,7 +39,7 @@ class Alert(object):
 
 
     def send(self):
-        print('SEND HAS BEEN CALLED')
+        # print('SEND HAS BEEN CALLED')
         msg = MIMEText('Hi {} we have found a price alert for you.'.format(self.user_email))
         msg['Subject'] = "Price alert"
         msg['From'] = AlertConstants.FROM
@@ -98,14 +98,14 @@ class Alert(object):
         return self.item.price
 
     def send_email_if_price_reached(self):
-        print('send email if price reached called')
+        # print('send email if price reached called')
         if float(self.item.price) < float(self.price_limit):
             self.send()
 
     # had to change this to a class method because it wasn't getting the variable user_email
     @classmethod
     def find_by_user_email(cls, user_email):
-        print('hello from find_by_user_email')
+        # print('hello from find_by_user_email')
         return [cls(**elem) for elem in Database.find(AlertConstants.COLLECTION, {'user_email': user_email})]
 
     @classmethod
@@ -117,12 +117,12 @@ class Alert(object):
     def deactivate(self):
         self.active = False
         self.save_to_mongo()
-        print('deactive called')
+        # print('deactive called')
 
     def activate(self):
         self.active = True
         self.save_to_mongo()
-        print('activate called, self.active == ', self.active)
+        # print('activate called, self.active == ', self.active)
 
     def delete(self):
         Database.remove(AlertConstants.COLLECTION, {'_id': self._id})
@@ -134,7 +134,6 @@ if __name__ == '__main__':
     # def __init__(self, user_email, price_limit, active=True, item_id=None, last_checked=None, _id=None):
     # alert_one = Alert("atomicpenguines@gmail.com", 900, True, "e3f9b504a1fe478898fb797083cc9adc")
     alert_one = Alert("atomicpenguines@gmail.com", 900, "e3f9b504a1fe478898fb797083cc9adc")
-    print('fuck you', alert_one.active)
     # print(alert_one.item)
     # alert object has no attribute item_id
     # print( Item.get_by_id("e3f9b504a1fe478898fb797083cc9adc") )

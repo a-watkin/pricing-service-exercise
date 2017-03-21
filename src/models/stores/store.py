@@ -6,7 +6,7 @@ import src.models.stores.errors as StoreErrors
 
 class Store(object):
     def __init__(self, name, url_prefix, tag_name, query, _id=None):
-        print("store object called")
+        # print("store object called")
         self.name = name
         self.url_prefix = url_prefix
         self.tag_name = tag_name

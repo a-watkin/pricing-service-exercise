@@ -59,7 +59,7 @@ def delete_store(store_id):
 @user_decorators.requires_admin_permission
 def create_store():
     if request.method == 'POST':
-        print('create_store here, am post data now?')
+        # print('create_store here, am post data now?')
         name = request.form['name']
         url_prefix = request.form['url_prefix']
         tag_name = request.form['tag_name']
