@@ -30,7 +30,7 @@ class Item(object):
 
         string_price = element.text.strip()
 
-        # finds the 115.00 from something like £115.00
+        # finds the 115.00 from something like 115.00
         # in brackets for the matching group
         pattern = re.compile("(\d+\.\d+)")
 
