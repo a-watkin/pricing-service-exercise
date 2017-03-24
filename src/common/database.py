@@ -3,7 +3,11 @@ import os
 
 class Database(object):
     # class static variables
+
+    # FOR TESTING
     # URI = "mongodb://127.0.0.1:27017"
+
+
     # mongo lab adds this URI by default
     URI = os.environ.get("MONGOLAB_URI")
     DATABASE = None
@@ -19,6 +23,8 @@ class Database(object):
     def initialize():
         client = pymongo.MongoClient(Database.URI)
         Database.DATABASE = client.get_default_database()
+
+        # FOR TESTING
         # Database.DATABASE = client['fullstack']
 
     @staticmethod

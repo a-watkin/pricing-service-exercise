@@ -1,9 +1,13 @@
 from functools import wraps
+
 from flask import session, url_for, redirect, request
+# from src import app as app
 
 # so here it is, correct statement not working.
 # this actually breaks an import in views
 # from src.app import app
+
+# still can't get import app to work
 
 
 # the whole thing checks to see if the user is logged in, if they are it just allows them to continue
@@ -21,6 +25,7 @@ def requires_login(func):
         return func(*args, **kwargs)
     return decorated_function
 
+
 def requires_admin_permission(func):
     # wraps the above with the below
     @wraps(func)
@@ -33,7 +38,9 @@ def requires_admin_permission(func):
             return redirect(url_for('user.login_user', next=request.path))
 
         # BE CAREFUL HERE the admins is a dict object you have to use square brackets
-        if session['email'] not in app.config['ADMINS']:
+        from src import app as app
+
+        if session['email'] not in app.app_admins:
             return redirect(url_for('user.login_user'))
 
         return func(*args, **kwargs)
@@ -52,3 +59,9 @@ def requires_admin_permission(func):
 # my_function() will give an error, NoneType object not callable
 
 # my_function(5, 7)
+
+
+if __name__ == '__main__':
+    from src import app as app
+
+    # print(app.app_admins)

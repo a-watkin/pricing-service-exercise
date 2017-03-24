@@ -67,7 +67,7 @@ class Store(object):
 
 if __name__ == '__main__':
     Database.initialize()
-    # store = Store("John Lewis", "http://www.johnlewis.com", "p", {"class": "price"})
+    store = Store("John Lewis", "http://www.johnlewis.com", "p", {"class": "price"})
     # store.save_to_mongo()
     # store.get_by_url_prefix("http://www.john")
     #
