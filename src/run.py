@@ -9,7 +9,7 @@ sys.setdefaultencoding('UTF8')
 
 
 print('encoding is', sys.getdefaultencoding())
-
+print('so now it will not even print anything')
 
 
 
