@@ -146,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/utils.py" />
         <option value="$PROJECT_DIR$/models/users/errors.py" />
         <option value="$PROJECT_DIR$/models/users/user.py" />
         <option value="$PROJECT_DIR$/src/models/users/errors.py" />
@@ -197,6 +196,7 @@
         <option value="$PROJECT_DIR$/src/run.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/src/runtime.txt" />
+        <option value="$PROJECT_DIR$/runtime.txt" />
       </list>
     </option>
   </component>
