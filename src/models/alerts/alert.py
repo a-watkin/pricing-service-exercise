@@ -93,7 +93,7 @@ class Alert(object):
         self.save_to_mongo()
 
         # this was missing
-        self.send_email_if_price_reached()
+        # self.send_email_if_price_reached()
 
         return self.item.price
 
@@ -139,3 +139,6 @@ if __name__ == '__main__':
     # print( Item.get_by_id("e3f9b504a1fe478898fb797083cc9adc") )
 
     alert_one.save_to_mongo()
+
+    blah = alert_one.load_item_price()
+    print(blah)

@@ -28,6 +28,10 @@ class Item(object):
         soup = BeautifulSoup(content, "html.parser")
         element = soup.find(self.tag_name, self.query)
 
+        # i suspect heroku doens't support unicode and that's why i'm getting a none type error
+        print(u"Unicode test: £ ’ …")
+
+        # getting an error on heroku with this line, i think it's not finding the right element
         string_price = element.text.strip()
 
         # finds the 115.00 from something like 115.00
