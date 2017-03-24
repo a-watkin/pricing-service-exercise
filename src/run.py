@@ -1,7 +1,7 @@
 from src.app import app
 import sys
 
-
+print('what?')
 print('encoding is', sys.getdefaultencoding())
 
 
