@@ -10,6 +10,9 @@ app.config.from_object('src.config')
 
 app_admins = app.config['ADMINS']
 
+app.config.encoding = "utf-8"
+
+
 # print("atomicpenguines@gmail.com" in app.config['ADMINS'])
 
 app.secret_key = "123"

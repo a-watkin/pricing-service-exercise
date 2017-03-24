@@ -29,7 +29,7 @@ class Item(object):
         element = soup.find(self.tag_name, self.query)
 
         # i suspect heroku doens't support unicode and that's why i'm getting a none type error
-        print(u"Unicode test: £ ’ …")
+        # print(u"Unicode test: £ ’ …")
 
         # getting an error on heroku with this line, i think it's not finding the right element
         string_price = element.text.strip()
@@ -38,11 +38,17 @@ class Item(object):
         # in brackets for the matching group
         pattern = re.compile("(\d+\.\d+)")
 
+
         match = pattern.search(string_price)
+
+
+
         # print(match)
         self.price = match.group()
         # print('self.price', self.price)
         return self.price
+
+
 
     def save_to_mongo(self):
         # Database.insert(ItemConstants.COLLECTION, self.json())
@@ -81,5 +87,5 @@ if __name__ == '__main__':
 
     # def __init__(self, name, url, _id=None):
     meh = Item("John Lewis", "http://www.johnlewis.com/herman-miller-aeron-office-chair/p230630306", "e3f9b504a1fe478898fb797083cc9adc")
-    meh.load_price()
+    print( meh.load_price() )
     meh.save_to_mongo()
