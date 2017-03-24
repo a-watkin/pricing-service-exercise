@@ -9,7 +9,7 @@ class Database(object):
         URI = "mongodb://127.0.0.1:27017"
 
     else:
-        URI = os.environ.get("MONGOLAB_URI")
+        URI = os.environ.get("MONGODB_URI")
 
     # class static variables
 
@@ -18,7 +18,7 @@ class Database(object):
 
 
     # mongo lab adds this URI by default
-    URI = os.environ.get("MONGOLAB_URI")
+    # URI = os.environ.get("MONGOLAB_URI")
     DATABASE = None
 
     # print('Database here: database called')
