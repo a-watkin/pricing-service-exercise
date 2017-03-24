@@ -2,7 +2,7 @@ import pymongo
 import platform
 import os
 
-# £
+
 class Database(object):
 
     if platform.system() == "Windows":

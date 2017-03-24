@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 from src.common.database import Database
+import sys
 
+
+print(sys.getdefaultencoding())
 
 app = Flask(__name__)
 
