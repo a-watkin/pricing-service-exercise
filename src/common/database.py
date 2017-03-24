@@ -5,12 +5,11 @@ import os
 
 class Database(object):
 
-    # this doesn't seem to work on heroku
-    # if platform.system() == "Windows":
-    #     URI = "mongodb://127.0.0.1:27017"
-    #
-    # else:
-    #     URI = os.environ.get("MONGOLAB_URI")
+    if platform.system() == "Windows":
+        URI = "mongodb://127.0.0.1:27017"
+
+    else:
+        URI = os.environ.get("MONGOLAB_URI")
 
     # class static variables
 
@@ -32,13 +31,13 @@ class Database(object):
     @staticmethod
     def initialize():
 
-        # if platform.system() == "Windows":
-        #     client = pymongo.MongoClient(Database.URI)
-        #     Database.DATABASE = client['fullstack']
-        #
-        # else:
-        client = pymongo.MongoClient(Database.URI)
-        Database.DATABASE = client.get_default_database()
+        if platform.system() == "Windows":
+            client = pymongo.MongoClient(Database.URI)
+            Database.DATABASE = client['fullstack']
+
+        else:
+            client = pymongo.MongoClient(Database.URI)
+            Database.DATABASE = client.get_default_database()
 
 
 
