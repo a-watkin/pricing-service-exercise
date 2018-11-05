@@ -14,3 +14,7 @@ Using:
 6. Bootstrap
 
 [See this project live](https://pricing-service-exercise.herokuapp.com/)
+
+## Note to me:
+
+The code in the repo has some import issues that I haven't looked into.
