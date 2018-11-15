@@ -16,7 +16,8 @@ class Alert(object):
         self.price_limit = price_limit
         self.item_id = item_id
         self.item = Item.get_by_id(item_id)
-        self.last_checked = datetime.datetime.utcnow() if last_checked is None else last_checked
+        self.last_checked = datetime.datetime.utcnow(
+        ) if last_checked is None else last_checked
         self._id = uuid.uuid4().hex if _id is None else _id
 
         # why doesn't this work? well it works if you put it last
@@ -37,10 +38,10 @@ class Alert(object):
     #         }
     #     )
 
-
     def send(self):
         # print('SEND HAS BEEN CALLED')
-        msg = MIMEText('Hi {} we have found a price alert for you.'.format(self.user_email))
+        msg = MIMEText(
+            'Hi {} we have found a price alert for you.'.format(self.user_email))
         msg['Subject'] = "Price alert"
         msg['From'] = AlertConstants.FROM
 
@@ -48,7 +49,7 @@ class Alert(object):
         # msg['To'] = AlertConstants.TEST_EMAIL if self.user_email is None else self.user_email
         msg['To'] = AlertConstants.TEST_EMAIL
 
-        s = smtplib.SMTP( AlertConstants.SMPT_URL, AlertConstants.SMPT_PORT )
+        s = smtplib.SMTP(AlertConstants.SMPT_URL, AlertConstants.SMPT_PORT)
 
         s.login(AlertConstants.FROM, AlertConstants.SMPT_KEY)
         s.sendmail(msg['From'], msg['To'], msg.as_string())
@@ -58,18 +59,20 @@ class Alert(object):
     def find_needing_update(cls, minutes_since_update=AlertConstants.ALERT_TIMEOUT):
         # gives a datetime object then subtracts ten minutes to give a time ten minutes ago
         # DATE BEFORE TEN MINUTES AGO
-        last_updated_limit = datetime.datetime.utcnow() - datetime.timedelta(minutes=minutes_since_update)
+        last_updated_limit = datetime.datetime.utcnow(
+        ) - datetime.timedelta(minutes=minutes_since_update)
         # returns objects where the update time is greater than 10 minutes ago
         # the cls gives the object with is an alert object
         # so it's reading from the database and creating alert objects then checking their properties
         return [cls(**elem) for elem in Database.find(AlertConstants.COLLECTION,
                                                       {"last_checked":
-                                                           {"$lte": last_updated_limit},
+                                                       {"$lte": last_updated_limit},
                                                        "active": True
                                                        })]
 
     def save_to_mongo(self):
-        Database.update(AlertConstants.COLLECTION, {"_id": self._id}, self.json())
+        Database.update(AlertConstants.COLLECTION, {
+                        "_id": self._id}, self.json())
 
     def json(self):
         return {
@@ -127,13 +130,14 @@ class Alert(object):
     def delete(self):
         Database.remove(AlertConstants.COLLECTION, {'_id': self._id})
 
+
 if __name__ == '__main__':
     Database.initialize()
 
-
     # def __init__(self, user_email, price_limit, active=True, item_id=None, last_checked=None, _id=None):
     # alert_one = Alert("atomicpenguines@gmail.com", 900, True, "e3f9b504a1fe478898fb797083cc9adc")
-    alert_one = Alert("atomicpenguines@gmail.com", 900, "e3f9b504a1fe478898fb797083cc9adc")
+    alert_one = Alert("atomicpenguines@gmail.com", 900,
+                      "e3f9b504a1fe478898fb797083cc9adc")
     # print(alert_one.item)
     # alert object has no attribute item_id
     # print( Item.get_by_id("e3f9b504a1fe478898fb797083cc9adc") )

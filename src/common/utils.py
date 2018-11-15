@@ -1,6 +1,7 @@
 from passlib.hash import pbkdf2_sha512
 import re
 
+
 class Utils(object):
 
     @staticmethod
@@ -27,17 +28,15 @@ class Utils(object):
 
         return pbkdf2_sha512.verify(password, hashed_password)
 
-
-
     @staticmethod
     def email_is_valid(email):
         # pycharm has a build in regular expression checker, pretty cool (click the light bulb)
         # using a regular expression check the email is valid
-        email_address_matcher = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+        email_address_matcher = re.compile(
+            r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
         return True if email_address_matcher else False
-
 
 
 if __name__ == '__main__':
     blah = Utils()
-    print( blah.hash_password("hello") )
+    print(blah.hash_password("hello"))

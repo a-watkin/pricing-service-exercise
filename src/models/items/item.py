@@ -38,23 +38,18 @@ class Item(object):
         # in brackets for the matching group
         pattern = re.compile("(\d+\.\d+)")
 
-
         match = pattern.search(string_price)
-
-
 
         # print(match)
         self.price = match.group()
         # print('self.price', self.price)
         return self.price
 
-
-
     def save_to_mongo(self):
         # Database.insert(ItemConstants.COLLECTION, self.json())
         # changed so that the price can be kept upto date
-        Database.update(ItemConstants.COLLECTION, {"_id": self._id}, self.json())
-
+        Database.update(ItemConstants.COLLECTION, {
+                        "_id": self._id}, self.json())
 
     def json(self):
         return {
@@ -67,14 +62,13 @@ class Item(object):
 
     @classmethod
     def from_mongo(cls, name):
-        price_data = Database.find_one(ItemConstants.COLLECTION, {"name": name})
+        price_data = Database.find_one(
+            ItemConstants.COLLECTION, {"name": name})
         return cls(**price_data)
 
     @classmethod
     def get_by_id(cls, item_id):
         return cls(**Database.find_one(ItemConstants.COLLECTION, {"_id": item_id}))
-
-
 
 
 if __name__ == '__main__':
@@ -86,6 +80,7 @@ if __name__ == '__main__':
     # print("price is: ", Procfile.price)
 
     # def __init__(self, name, url, _id=None):
-    meh = Item("John Lewis", "http://www.johnlewis.com/herman-miller-aeron-office-chair/p230630306", "e3f9b504a1fe478898fb797083cc9adc")
-    print( meh.load_price() )
+    meh = Item("John Lewis", "http://www.johnlewis.com/herman-miller-aeron-office-chair/p230630306",
+               "e3f9b504a1fe478898fb797083cc9adc")
+    print(meh.load_price())
     meh.save_to_mongo()

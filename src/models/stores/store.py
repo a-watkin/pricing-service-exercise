@@ -13,10 +13,8 @@ class Store(object):
         self.query = query
         self._id = uuid.uuid4().hex if _id is None else _id
 
-
     def __repr__(self):
         return "<Store {}>".format(self.name)
-
 
     def json(self):
         return {
@@ -27,16 +25,14 @@ class Store(object):
             "query": self.query
         }
 
-
     @classmethod
     def get_by_id(cls, id):
         return cls(**Database.find_one(StoreConstants.COLLECTION, {"_id": id}))
 
     def save_to_mongo(self):
-        Database.update(StoreConstants.COLLECTION, {"_id": self._id}, self.json())
+        Database.update(StoreConstants.COLLECTION, {
+                        "_id": self._id}, self.json())
         # Database.insert(StoreConstants.COLLECTION, self.json())
-
-
 
     @classmethod
     def get_by_name(cls, store_name):
@@ -54,8 +50,8 @@ class Store(object):
                 store = cls.get_by_url_prefix(url[:i])
                 return store
             except:
-                raise StoreErrors.StoreNotFoundException("The URL was not found.")
-
+                raise StoreErrors.StoreNotFoundException(
+                    "The URL was not found.")
 
     @classmethod
     def all(cls):
@@ -67,7 +63,8 @@ class Store(object):
 
 if __name__ == '__main__':
     Database.initialize()
-    store = Store("John Lewis", "http://www.johnlewis.com", "p", {"class": "price"})
+    store = Store("John Lewis", "http://www.johnlewis.com",
+                  "p", {"class": "price"})
     # store.save_to_mongo()
     # store.get_by_url_prefix("http://www.john")
     #

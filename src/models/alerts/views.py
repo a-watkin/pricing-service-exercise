@@ -16,6 +16,8 @@ def index():
 
 # so on a hunch i commented this out and now it works? what the actual fuck
 # its methods, not method
+
+
 @alert_blueprint.route('/new', methods=['GET', 'POST'])
 # checks that the user is logged in
 @user_decorators.requires_login
@@ -30,9 +32,7 @@ def create_alert():
         item.save_to_mongo()
 
         alert = Alert(session['email'], price_limit, item._id)
-        alert.load_item_price() # Already saves to mongo
-
-
+        alert.load_item_price()  # Already saves to mongo
 
     return render_template('alerts/new_alert.html')
 
@@ -57,14 +57,12 @@ def edit_alert(alert_id):
         # maybe?
         alert.item.save_to_mongo()
 
-        return redirect( url_for( 'users.user_alerts' ) )
+        return redirect(url_for('users.user_alerts'))
 
         # experimenting
         # return get_alert_page(alert_id)
 
     return render_template('alerts/edit_alert.html', alert=alert)
-
-
 
 
 @alert_blueprint.route('/deactivate/<string:alert_id>')
@@ -73,11 +71,13 @@ def deactivate_alert(alert_id):
     Alert.find_by_id(alert_id).deactivate()
     return redirect(url_for('users.user_alerts'))
 
+
 @alert_blueprint.route('/delete/<string:alert_id>')
 @user_decorators.requires_login
 def delete_alert(alert_id):
     Alert.find_by_id(alert_id).delete()
     return redirect(url_for('users.user_alerts'))
+
 
 @alert_blueprint.route('/activate/<string:alert_id>')
 @user_decorators.requires_login

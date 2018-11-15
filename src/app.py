@@ -1,3 +1,6 @@
+from src.models.stores.views import store_blueprint
+from src.models.alerts.views import alert_blueprint
+from src.models.users.views import user_blueprint
 from flask import Flask, render_template
 from src.common.database import Database
 
@@ -26,9 +29,6 @@ def home():
 # import the blueprints
 #
 # it says it can't find this blueprint, seems to link to it ok though?
-from src.models.users.views import user_blueprint
-from src.models.alerts.views import alert_blueprint
-from src.models.stores.views import store_blueprint
 
 
 # register the blueprints

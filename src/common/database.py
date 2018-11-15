@@ -16,7 +16,6 @@ class Database(object):
     # FOR TESTING
     # URI = "mongodb://127.0.0.1:27017"
 
-
     # mongo lab adds this URI by default
     # URI = os.environ.get("MONGOLAB_URI")
     DATABASE = None
@@ -39,19 +38,14 @@ class Database(object):
             client = pymongo.MongoClient(Database.URI)
             Database.DATABASE = client.get_default_database()
 
-
-
-
     @staticmethod
     def insert(collection, data):
         Database.DATABASE[collection].insert(data)
-
 
     @staticmethod
     def find(collection, query):
         # print('Database here: find called', collection, query)
         return Database.DATABASE[collection].find(query)
-
 
     @staticmethod
     def find_one(collection, query):
@@ -67,6 +61,7 @@ class Database(object):
     def remove(collection, query):
         Database.DATABASE[collection].remove(query)
 
+
 if __name__ == '__main__':
     db = Database()
     db.initialize()
@@ -77,9 +72,8 @@ if __name__ == '__main__':
     # result3 = db.count('users')
     # print('why?', result2)
 
-
-    result = db.find( "users", {} )
-    print( [elem for elem in Database.find("users", {})] )
+    result = db.find("users", {})
+    print([elem for elem in Database.find("users", {})])
     # print('/n')
 
     result2 = db.find_one("users", {"email": 'test5@test.com'})

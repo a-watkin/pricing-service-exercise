@@ -5,7 +5,7 @@ MAILGUN_URL = os.environ.get('MAILGUN_URL')
 MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 
 
-ALERT_TIMEOUT = 10 # minutes
+ALERT_TIMEOUT = 10  # minutes
 COLLECTION = "alerts"
 
 # SMPT

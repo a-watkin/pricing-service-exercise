@@ -71,5 +71,4 @@ def create_store():
         # def __init__(self, name, url_prefix, tag_name, query, _id=None):
         Store(name, url_prefix, tag_name, query).save_to_mongo()
 
-
     return render_template('stores/new_store.html')
