@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
-from src.models.alerts.alert import Alert
-from src.models.items.item import Item
-import src.models.users.decorators as user_decorators
+from models.alerts.alert import Alert
+from models.items.item import Item
+import models.users.decorators as user_decorators
 
 # store_blueprint = Blueprint('stores', __name__)
 # print('why?')

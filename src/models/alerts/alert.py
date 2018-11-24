@@ -1,9 +1,9 @@
 import uuid
 import requests
-import src.models.alerts.constants as AlertConstants
+import models.alerts.constants as AlertConstants
 import datetime
-from src.common.database import Database
-from src.models.items.item import Item
+from common.database import Database
+from models.items.item import Item
 
 # email stuff
 import smtplib

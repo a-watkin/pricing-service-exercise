@@ -1,12 +1,12 @@
-import src.models.users.errors as UserError
-from src.common.database import Database
-from src.common.utils import Utils
+import models.users.errors as UserError
+from common.database import Database
+from common.utils import Utils
 # pycharm is not great with imports it seems, it removes the import below when you use the hotkey for import
 # optermisation
 import uuid
-from src.models.alerts.alert import Alert
+from models.alerts.alert import Alert
 
-from src.models.users import constants as UserConstants
+from models.users import constants as UserConstants
 
 
 class User(object):

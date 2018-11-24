@@ -1,14 +1,14 @@
-from src.models.stores.views import store_blueprint
-from src.models.alerts.views import alert_blueprint
-from src.models.users.views import user_blueprint
+from models.stores.views import store_blueprint
+from models.alerts.views import alert_blueprint
+from models.users.views import user_blueprint
 from flask import Flask, render_template
-from src.common.database import Database
+from common.database import Database
 
 
 app = Flask(__name__)
 
 
-app.config.from_object('src.config')
+app.config.from_object('config')
 app_admins = app.config['ADMINS']
 
 
